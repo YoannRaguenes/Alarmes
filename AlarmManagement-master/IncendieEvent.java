@@ -13,15 +13,6 @@ public class IncendieEvent extends AlarmeEvent{
 	}
 
 
-	public boolean isFume() {
-		return fume;
-	}
-
-
-	public void setFume(boolean fume) {
-		this.fume = fume;
-	}
-
 
 	@Override
 	public String toString() {

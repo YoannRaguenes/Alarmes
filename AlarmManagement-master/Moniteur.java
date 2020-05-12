@@ -19,32 +19,19 @@ public class Moniteur implements IncendieListener,GazListener,RadiationListener 
 
 	@Override
 	public void attentionFume(IncendieEvent event) {
-		if(event.isFume()) {
-			System.out.println(" il a un feu ");
+			System.out.println("Alarme FEU : " + event.toString());
 			
-		}
-		else {
-			System.out.println("R.A.S");
-		}
+
 	}
 	public void attentionGaz(GazEvent event) {
-		if(event.getImportance()>=1) {
-			System.out.println("Attention niv gaz ");
-		}
-		else {
-			System.out.println("R.A.S");
-		}
+		System.out.println("Alarme GAZ : " + event.toString());	
 	}
 
 
 	@Override
 	public void attentionRadiation(RadiationEvent event) {
-		// TODO Auto-generated method stub
-		if(event.getImportance()>=1) {
-			System.out.println("Attention niv radiation ");
-		}
-		else {
-			System.out.println("R.A.S");
-		}
+		System.out.println("Alarme RADIATION : " + event.toString());
+		
 	}
 }
+

@@ -18,7 +18,7 @@ public class GazEvent extends AlarmeEvent{
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
+		
 		return "Capteur : "+this.type+" \nà la date "+ this.date + " \nlocalisée "+this.localisation +" \net est jugé d'importance "+this.importance;
 	}
 

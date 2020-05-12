@@ -17,9 +17,7 @@ public abstract class AlarmeEvent extends EventObject{
 			this.date = localDateTime;
 			
 		}
-		else {
-			System.out.println("erreur de niveau d'importance il doit être compris en 1 ET 3");
-		}
+
 		
 	}
 

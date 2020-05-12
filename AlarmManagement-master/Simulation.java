@@ -31,7 +31,7 @@ public class Simulation extends JFrame implements ActionListener{
 	  private JLabel labelSpe = new JLabel(" ");
 	  private JTextField speField = new JTextField("",10);
 	  
-	  private JButton bouton = new JButton("Valider");
+	  private JButton bouton = new JButton("Simuler");
 	  
 	  private Monitoring monitors;
 	  
@@ -45,13 +45,13 @@ public class Simulation extends JFrame implements ActionListener{
 			 
 			//fenetre
 		    this.setTitle("Simulateur alarme");
-		    this.setSize(800, 500);
+		    this.setSize(400, 250);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    this.setLocationRelativeTo(null);
 
 		    //batiment
-		    comboBat.setPreferredSize(new Dimension(100, 20));
-		    String[] tabBat = {"C203", "C204", "Option 3", "Option 4"}; //TODO : recuperer liste batiments
+		    comboBat.setPreferredSize(new Dimension(1000, 20));
+		    String[] tabBat = {"C203", "C204", "C205", "C206"}; // recuperer liste batiments
 		    comboBat = new JComboBox(tabBat);
 		    batiment.add(labelBat);
 		    batiment.add(comboBat);
@@ -121,13 +121,23 @@ public class Simulation extends JFrame implements ActionListener{
 		        	
 		        	container.updateUI();
 		        } 
+		        else {
+		        		
+		        	left.removeAll();
+		        	left.add(batiment);
+		    	    left.add(type);
+		    	    left.add(niveau);
+		    	    left.add(panBout);
+		    	    
+		        	container.updateUI();
+		        }
 			}else {
 				String getType = (String)comboType.getSelectedItem();
 		        if(getType.equals("Gaz")) {
 		        	SourceGaz sg = new SourceGaz();
 		            Moniteur ecologie = new Moniteur("B");	
 		            sg.addGazListener(ecologie);
-		            GazEvent ae = sg.generateGazEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),speField.getText().toString(),comboBat.getSelectedItem().toString());
+		            GazEvent ae = sg.generateGazEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),comboBat.getSelectedItem().toString(),speField.getText().toString());
 		            this.monitors.addAlarmeSign(sg.toString());
 		            
 		            
@@ -138,7 +148,7 @@ public class Simulation extends JFrame implements ActionListener{
 		            rad.addRadiationListener(ecologie);
 		            if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
 		            	RadiationEvent re = rad.generateRadiationEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()),comboBat.getSelectedItem().toString());
-			            this.monitors.addAlarmeSign(re.toString());
+		            	this.monitors.addAlarmeSign(re.toString());
 			           
 		            }else {
 		            	JOptionPane.showMessageDialog(this,
@@ -150,8 +160,8 @@ public class Simulation extends JFrame implements ActionListener{
 		            
 		        }else {
 		        	SourceIncendie feu = new SourceIncendie();
-		            Moniteur ecologie = new Moniteur("A");	
-		            feu.addIncendieListener(ecologie);
+		            Moniteur pompier = new Moniteur("A");	
+		            feu.addIncendieListener(pompier);
 		            IncendieEvent ie = feu.generateIncendieEvent( comboBat.getSelectedItem().toString(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),java.time.LocalDateTime.now());
 		            this.monitors.addAlarmeSign(ie.toString());
 		            
