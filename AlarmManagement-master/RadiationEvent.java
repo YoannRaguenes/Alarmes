@@ -20,5 +20,8 @@ public class RadiationEvent extends AlarmeEvent{
 		
 	}
 	
+	public String toInfo() {
+		return "Detection de RADIATION";
+	}
 
 }

@@ -22,7 +22,10 @@ public class IncendieEvent extends AlarmeEvent{
 	}
 
 
-	
+	public String toInfo() {
+		return "Detection d'un INCENDIE";
+	}
+
 	
 	
 	

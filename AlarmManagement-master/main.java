@@ -1,7 +1,8 @@
 
+
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		Moniteur pompier = new Moniteur("A");
 		Moniteur ecologie = new Moniteur("B");
 
@@ -13,7 +14,6 @@ public class main {
 		  mon.addMoniteur(ecologie);
 		  
 		  fen.addMonitor(mon);
-		  
 		  
 	}
 

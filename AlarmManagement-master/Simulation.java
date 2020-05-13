@@ -137,8 +137,9 @@ public class Simulation extends JFrame implements ActionListener{
 		        	SourceGaz sg = new SourceGaz();
 		            Moniteur ecologie = new Moniteur("B");	
 		            sg.addGazListener(ecologie);
-		            GazEvent ae = sg.generateGazEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),comboBat.getSelectedItem().toString(),speField.getText().toString());
-		            this.monitors.addAlarmeSign(sg.toString());
+		            GazEvent ge = sg.generateGazEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),comboBat.getSelectedItem().toString(),speField.getText().toString());
+		            this.monitors.addAlarmeInfo(ge.toInfo());
+		            this.monitors.addAlarmeString(ge.toString());
 		            
 		            
 		            
@@ -148,7 +149,8 @@ public class Simulation extends JFrame implements ActionListener{
 		            rad.addRadiationListener(ecologie);
 		            if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
 		            	RadiationEvent re = rad.generateRadiationEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()),comboBat.getSelectedItem().toString());
-		            	this.monitors.addAlarmeSign(re.toString());
+		            	this.monitors.addAlarmeInfo(re.toInfo());
+		            	this.monitors.addAlarmeString(re.toString());
 			           
 		            }else {
 		            	JOptionPane.showMessageDialog(this,
@@ -163,7 +165,8 @@ public class Simulation extends JFrame implements ActionListener{
 		            Moniteur pompier = new Moniteur("A");	
 		            feu.addIncendieListener(pompier);
 		            IncendieEvent ie = feu.generateIncendieEvent( comboBat.getSelectedItem().toString(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),java.time.LocalDateTime.now());
-		            this.monitors.addAlarmeSign(ie.toString());
+		            this.monitors.addAlarmeInfo(ie.toInfo());
+		            this.monitors.addAlarmeString(ie.toString());
 		            
 		        }
 			}
@@ -174,5 +177,7 @@ public class Simulation extends JFrame implements ActionListener{
 			this.monitors = mon;	
 		}
 		
+		
 	}
+
 

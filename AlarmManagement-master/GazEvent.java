@@ -21,7 +21,10 @@ public class GazEvent extends AlarmeEvent{
 		
 		return "Capteur : "+this.type+" \nà la date "+ this.date + " \nlocalisée "+this.localisation +" \net est jugé d'importance "+this.importance;
 	}
-
+	
+	public String toInfo() {
+		return "Detection de GAZ";
+	}
 
 
 	
