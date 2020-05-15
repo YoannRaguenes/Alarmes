@@ -9,11 +9,12 @@ public class main {
 		
 		  Simulation fen = new Simulation();
 		  Monitoring mon = new Monitoring();
-		  
+		  Sauvegarde sau = new Sauvegarde();
 		  mon.addMoniteur(pompier);
 		  mon.addMoniteur(ecologie);
 		  
 		  fen.addMonitor(mon);
+		  fen.addSauvegarde(sau);
 		  
 	}
 
