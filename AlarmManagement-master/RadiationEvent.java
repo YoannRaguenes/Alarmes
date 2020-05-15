@@ -3,8 +3,8 @@ import java.time.LocalDateTime;
 public class RadiationEvent extends AlarmeEvent{
 	private int niveau;
 
-	public RadiationEvent(Object source, LocalDateTime localDateTime, int importance, int niveau, String localisation) {
-		super(source, localisation,importance, localDateTime);
+	public RadiationEvent(Object source, LocalDateTime localDateTime, int importance, int niveau, String localisation, boolean traite) {
+		super(source, localisation,importance, localDateTime, traite);
 		if(niveau<=100 & niveau>=0) {
 			this.niveau = niveau;
 			
@@ -23,5 +23,9 @@ public class RadiationEvent extends AlarmeEvent{
 	public String toInfo() {
 		return "Detection de RADIATION";
 	}
-
+	
+	public boolean toTraite() {
+		return this.traite;
+	}
+	
 }

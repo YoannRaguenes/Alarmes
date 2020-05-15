@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.util.EventObject;
 
 public class IncendieEvent extends AlarmeEvent{
-	private boolean fume;
+
 	
 
-	public IncendieEvent(Object source, String localisation, int importance,LocalDateTime date){
-		super(source,  localisation, importance, date );
+	public IncendieEvent(Object source, String localisation, int importance,LocalDateTime date, boolean traite){
+		super(source,  localisation, importance, date, traite);
 		
 	}
 
@@ -27,7 +27,9 @@ public class IncendieEvent extends AlarmeEvent{
 	}
 
 	
-	
+	public boolean toTraite() {
+		return this.traite;
+	}
 	
 
 }

@@ -23,7 +23,7 @@ public class SourceIncendie{
 		listenerList.remove(listener);
 	}
 	public IncendieEvent generateIncendieEvent(String localisation, int importance,LocalDateTime date) {
-		IncendieEvent event = new IncendieEvent(this, localisation,importance,date);
+		IncendieEvent event = new IncendieEvent(this, localisation,importance,date, false);
 		for(IncendieListener ie : listenerList) {
 			ie.attentionFume(event);
 		}

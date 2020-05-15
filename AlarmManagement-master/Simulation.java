@@ -41,8 +41,8 @@ public class Simulation extends JFrame implements ActionListener{
 	  
 	  private JButton bouton = new JButton("Simuler");
 	  
-	  private Monitoring monitors;
-	  private Sauvegarde sauvegarde;
+	  private MoniteurA monitors;
+	  private MoniteurB sauvegarde;
 	  
 	  JPanel moniteur = new JPanel();
 	  JPanel batiment = new JPanel();
@@ -163,9 +163,10 @@ public class Simulation extends JFrame implements ActionListener{
 		    	        GazEvent ge = sg.generateGazEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),comboBat.getSelectedItem().toString(),speField.getText().toString());
 		    	        this.monitors.addAlarmeInfo(ge.toInfo());
 		    	        this.monitors.addAlarmeString(ge.toString());
+		    	        this.monitors.addBoolean(ge.toTraite());
 		    	        this.sauvegarde.addAlarmeInfo(ge.toInfo());
 		    	        this.sauvegarde.addAlarmeString(ge.toString());
-		    	        
+		    	        this.sauvegarde.addBoolean(ge.toTraite());
 		    	        
 		    	    }else if(getType.equals("Radiation")) {
 		    	    	SourceRadiation rad = new SourceRadiation();
@@ -175,7 +176,7 @@ public class Simulation extends JFrame implements ActionListener{
 		    	        	RadiationEvent re = rad.generateRadiationEvent(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()),comboBat.getSelectedItem().toString());
 		    	        	this.monitors.addAlarmeInfo(re.toInfo());
 		    	        	this.monitors.addAlarmeString(re.toString());
-		    	           
+		    	        	this.monitors.addBoolean(re.toTraite());
 		    	        }else {
 		    	        	JOptionPane.showMessageDialog(this,
 		    	        		  	"Les radiations doivent être comprises entre 0 et 100 !",
@@ -191,15 +192,15 @@ public class Simulation extends JFrame implements ActionListener{
 		    	        IncendieEvent ie = feu.generateIncendieEvent( comboBat.getSelectedItem().toString(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),java.time.LocalDateTime.now());
 		    	        this.sauvegarde.addAlarmeInfo(ie.toInfo());
 		    	        this.sauvegarde.addAlarmeString(ie.toString());
-		    	        
-		    	    }
+		    	        this.sauvegarde.addBoolean(ie.toTraite());
 		    	}
-		    	}
-	  public void addMonitor(Monitoring mon) {
+		    }
+	  }
+	  public void addA(MoniteurA mon) {
 		  this.monitors = mon;	
 		  }
-		  public void addSauvegarde(Sauvegarde sauv) {
-		  this.sauvegarde = sauv;	
+	public void addB(MoniteurB sauv) {
+		 this.sauvegarde = sauv;	
 		  }
 
 		 }

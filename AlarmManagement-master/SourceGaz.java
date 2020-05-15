@@ -21,7 +21,7 @@ public class SourceGaz {
 		listenerList.remove(listener);
 	}
 	public GazEvent generateGazEvent(LocalDateTime localDateTime, int importance, String type, String localisation) {
-		GazEvent event = new GazEvent(this,localDateTime,importance,type, localisation);
+		GazEvent event = new GazEvent(this,localDateTime,importance,type, localisation, false);
 		for(GazListener ie : listenerList) {
 			ie.attentionGaz(event);
 			

@@ -8,14 +8,14 @@ public abstract class AlarmeEvent extends EventObject{
 	protected LocalDateTime date;
 	protected String localisation;
 	protected int importance;
-	
-	public AlarmeEvent(Object source,String localisation,int importance, LocalDateTime localDateTime) {
+	protected boolean traite;
+	public AlarmeEvent(Object source,String localisation,int importance, LocalDateTime localDateTime, boolean traite) {
 		super(source);
 		if(importance>=1 & importance<=3) {
 			this.localisation = localisation;
 			this.importance= importance;
 			this.date = localDateTime;
-			
+			this.traite = traite;
 		}
 
 		

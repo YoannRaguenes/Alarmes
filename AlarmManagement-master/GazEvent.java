@@ -4,8 +4,8 @@ import java.util.EventObject;
 public class GazEvent extends AlarmeEvent{
 	private String type;
 	
-	public GazEvent(Object source, LocalDateTime localDateTime, int importance,String localisation, String type) {
-		super(source, localisation,importance,localDateTime);
+	public GazEvent(Object source, LocalDateTime localDateTime, int importance,String localisation, String type, boolean traite) {
+		super(source, localisation,importance,localDateTime, traite);
 		this.type = type;
 	}
 
@@ -26,6 +26,10 @@ public class GazEvent extends AlarmeEvent{
 		return "Detection de GAZ";
 	}
 
+	public boolean toTraite() {
+		return this.traite;
+	}
+	
 
 	
 

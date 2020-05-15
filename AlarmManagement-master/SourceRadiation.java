@@ -21,7 +21,7 @@ public class SourceRadiation {
 		listenerList.remove(listener);
 	}
 	public RadiationEvent generateRadiationEvent( LocalDateTime localDateTime, int importance, int niveau, String localisation){
-		RadiationEvent event = new RadiationEvent(this,localDateTime,importance, niveau, localisation);
+		RadiationEvent event = new RadiationEvent(this,localDateTime,importance, niveau, localisation, false);
 		for(RadiationListener ie : listenerList) {
 			ie.attentionRadiation(event);
 		}
